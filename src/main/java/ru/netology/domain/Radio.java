@@ -45,19 +45,18 @@ public class Radio {
 
         int target = getVolume();
 
-        if (target >= 0 && target < 10) {
-            setVolume(target+1);
-        } else {
-            setVolume(target);
+        if (target < 10) {
+            setVolume(target + 1);
         }
-
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0 && currentVolume <= 10) {
-            currentVolume = currentVolume - 1;
-        }
 
+        int target = getVolume();
+
+        if (target > 0) {
+            setVolume(target - 1);
+        }
     }
 
 
