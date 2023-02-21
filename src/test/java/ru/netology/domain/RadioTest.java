@@ -11,10 +11,10 @@ public class RadioTest {
 
         Radio radio = new Radio();
 
-        radio.currentStation = 0;
+        radio.setStation(0);
 
         int expected = 0;
-        int actual = radio.currentStation;
+        int actual = radio.getStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -25,10 +25,10 @@ public class RadioTest {
 
         Radio radio = new Radio();
 
-        radio.currentVolume = 0;
+        radio.setVolume(0);
 
         int expected = 0;
-        int actual = radio.currentVolume;
+        int actual = radio.getVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -42,7 +42,7 @@ public class RadioTest {
         // вызываем целевой метод:
         radio.setStation(station);
 
-        int actual = radio.currentStation;
+        int actual = radio.getStation();
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
@@ -56,7 +56,7 @@ public class RadioTest {
         // вызываем целевой метод:
         radio.setVolume(volume);
 
-        int actual = radio.currentVolume;
+        int actual = radio.getVolume();
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
@@ -68,10 +68,10 @@ public class RadioTest {
         Radio radio = new Radio();
 
         // вызываем целевой метод:
-        radio.currentStation = currentStation;
+        radio.setStation(currentStation);
         radio.nextStation();
 
-        int actual = radio.currentStation;
+        int actual = radio.getStation();
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
@@ -83,10 +83,10 @@ public class RadioTest {
         Radio radio = new Radio();
 
         // вызываем целевой метод:
-        radio.currentStation = currentStation;
+        radio.setStation(currentStation);
         radio.prevStation();
 
-        int actual = radio.currentStation;
+        int actual = radio.getStation();
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
@@ -98,10 +98,10 @@ public class RadioTest {
         Radio radio = new Radio();
 
         // вызываем целевой метод:
-        radio.currentVolume = currentVolume;
+        radio.setVolume(currentVolume);
         radio.increaseVolume();
 
-        int actual = radio.currentVolume;
+        int actual = radio.getVolume();
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
@@ -113,10 +113,10 @@ public class RadioTest {
         Radio radio = new Radio();
 
         // вызываем целевой метод:
-        radio.currentVolume = currentVolume;
+        radio.setVolume(currentVolume);
         radio.decreaseVolume();
 
-        int actual = radio.currentVolume;
+        int actual = radio.getVolume();
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
