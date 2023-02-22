@@ -4,48 +4,63 @@ public class Radio {
 
     private int currentStation;
     private int currentVolume;
+    private int amountStations;
+    private int amountDefaultStations = 10;
+    private int firstStation = 0;
+    private int maxVolume = 100;
+    private int minVolume = 0;
 
-    public void setStation(int station) {
-        if (station >= 0 && station <= 9) {
-            currentStation = station;
+    public Radio(int amountStations) {
+
+        this.amountStations = amountStations;
+    }
+
+    public Radio() {
+
+        this.amountStations = amountDefaultStations;
+    }
+
+    public void setStation(int currentStation) {
+        if (currentStation >= firstStation && currentStation <= (amountStations - 1)) {
+            this.currentStation = currentStation;
         }
     }
 
     public int getStation() {
-        return currentStation;
+        return this.currentStation;
     }
 
     public void nextStation() {
-        if (currentStation == 9) {
-            currentStation = 0;
+        if (this.currentStation == (amountStations - 1)) {
+            this.currentStation = firstStation;
             return;
         }
-        currentStation++;
+        this.currentStation++;
     }
 
     public void prevStation() {
-        if (currentStation == 0) {
-            currentStation = 9;
+        if (this.currentStation == firstStation) {
+            this.currentStation = amountStations - 1;
             return;
         }
-        currentStation--;
+        this.currentStation--;
     }
 
     public void setVolume(int volume) {
-        if (volume >= 0 && volume <= 10) {
+        if (volume >= minVolume && volume <= maxVolume) {
             this.currentVolume = volume;
         }
     }
 
     public int getVolume() {
-        return currentVolume;
+        return this.currentVolume;
     }
 
     public void increaseVolume() {
 
         int target = getVolume();
 
-        if (target < 10) {
+        if (target < maxVolume) {
             setVolume(target + 1);
         }
     }
@@ -54,10 +69,9 @@ public class Radio {
 
         int target = getVolume();
 
-        if (target > 0) {
+        if (target > minVolume) {
             setVolume(target - 1);
         }
     }
-
 
 }
