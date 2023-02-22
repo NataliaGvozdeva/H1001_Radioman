@@ -11,11 +11,13 @@ public class RadioTest {
 
         Radio radio = new Radio();
 
+        // вызываем целевой метод:
         radio.setStation(0);
 
         int expected = 0;
         int actual = radio.getStation();
 
+        // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
 
     }
@@ -25,11 +27,13 @@ public class RadioTest {
 
         Radio radio = new Radio();
 
+        // вызываем целевой метод:
         radio.setVolume(0);
 
         int expected = 0;
         int actual = radio.getVolume();
 
+        // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
 
     }
@@ -41,6 +45,20 @@ public class RadioTest {
 
         // вызываем целевой метод:
         radio.setStation(station);
+
+        int actual = radio.getStation();
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/setstationrange.csv")
+    public void shouldSetStationRange(int stationRange, int expected) {
+        Radio radio = new Radio(stationRange);
+
+        // вызываем целевой метод:
+        radio.setStation(stationRange-1);
 
         int actual = radio.getStation();
 
@@ -78,9 +96,39 @@ public class RadioTest {
     }
 
     @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/setnextnotdefaultstation.csv")
+    public void shouldSetNextNotDefaultStation(int stationRange, int currentStation, int expected) {
+        Radio radio = new Radio(stationRange);
+
+        // вызываем целевой метод:
+        radio.setStation(currentStation);
+        radio.nextStation();
+
+        int actual = radio.getStation();
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/setprevstation.csv")
     public void shouldSetPrevStation(int currentStation, int expected) {
         Radio radio = new Radio();
+
+        // вызываем целевой метод:
+        radio.setStation(currentStation);
+        radio.prevStation();
+
+        int actual = radio.getStation();
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/setprevnotdefaultstation.csv")
+    public void shouldSetPrevNotDefaultStation(int stationRange, int currentStation, int expected) {
+        Radio radio = new Radio(stationRange);
 
         // вызываем целевой метод:
         radio.setStation(currentStation);
